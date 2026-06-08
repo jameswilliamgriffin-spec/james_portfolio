@@ -98,7 +98,7 @@ export function Hero() {
             <h1 className="hero-name font-display text-[clamp(7.5rem,20.5vw,24rem)] font-black uppercase text-ink transition-colors duration-700 dark:text-bone">
               <span className="hero-name-line">James</span>
               <span className="hero-name-line">
-                Griffin
+                Griffin.
                 <span
                   aria-hidden="true"
                   className="ml-[0.018em] inline-block h-[0.73em] w-[0.032em] animate-blink translate-y-[0.055em] bg-ink align-baseline transition-colors duration-700 dark:bg-bone"

@@ -12,6 +12,7 @@ const config: Config = {
         ink: "#071525",
         mist: "#f6e7e9",
         electric: "#2437ff",
+        "electric-soft": "#8fb5ff",
         night: "#030a1d",
         bone: "#fff5e8",
       },

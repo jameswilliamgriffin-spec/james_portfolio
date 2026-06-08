@@ -69,4 +69,9 @@ body {
 
 .text-highlight {
   color: #2437ff;
+  transition: color 500ms ease;
+}
+
+.dark .text-highlight {
+  color: #8fb5ff;
 }

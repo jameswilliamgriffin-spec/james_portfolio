@@ -23,8 +23,8 @@ export function AnimatedRole() {
   }, []);
 
   return (
-    <div className="flex min-h-7 items-center gap-6 text-center text-[0.7rem] font-semibold uppercase tracking-[0.38em] text-electric sm:min-h-8 sm:text-[0.82rem]">
-      <span className="h-2 w-2 rounded-full bg-electric shadow-[0_0_22px_rgba(36,55,255,0.45)]" />
+    <div className="flex min-h-7 items-center gap-6 text-center text-[0.7rem] font-semibold uppercase tracking-[0.38em] text-electric transition-colors duration-500 dark:text-electric-soft sm:min-h-8 sm:text-[0.82rem]">
+      <span className="h-2 w-2 rounded-full bg-electric shadow-[0_0_22px_rgba(36,55,255,0.45)] transition-colors duration-500 dark:bg-electric-soft dark:shadow-[0_0_22px_rgba(143,181,255,0.42)]" />
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={roles[index]}
@@ -37,7 +37,7 @@ export function AnimatedRole() {
           {roles[index]}
         </motion.span>
       </AnimatePresence>
-      <span className="h-2 w-2 rounded-full bg-electric shadow-[0_0_22px_rgba(36,55,255,0.45)]" />
+      <span className="h-2 w-2 rounded-full bg-electric shadow-[0_0_22px_rgba(36,55,255,0.45)] transition-colors duration-500 dark:bg-electric-soft dark:shadow-[0_0_22px_rgba(143,181,255,0.42)]" />
     </div>
   );
 }
