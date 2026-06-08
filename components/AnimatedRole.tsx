@@ -46,7 +46,6 @@ export function AnimatedRole() {
 
   return (
     <div className="flex min-h-7 items-center gap-6 text-center text-[0.7rem] font-semibold uppercase tracking-[0.38em] text-electric transition-colors duration-500 dark:text-electric-soft sm:min-h-8 sm:text-[0.9rem] sm:tracking-[0.44em]">
-      <span className="h-2 w-2 rounded-full bg-electric shadow-[0_0_22px_rgba(36,55,255,0.45)] transition-colors duration-500 dark:bg-electric-soft dark:shadow-[0_0_22px_rgba(143,181,255,0.42)]" />
       <motion.span
         aria-live="polite"
         animate={{ opacity: displayedRole ? 1 : 0.72 }}
@@ -59,7 +58,6 @@ export function AnimatedRole() {
           className="ml-1 inline-block h-[1.05em] w-px animate-blink bg-current align-middle"
         />
       </motion.span>
-      <span className="h-2 w-2 rounded-full bg-electric shadow-[0_0_22px_rgba(36,55,255,0.45)] transition-colors duration-500 dark:bg-electric-soft dark:shadow-[0_0_22px_rgba(143,181,255,0.42)]" />
     </div>
   );
 }

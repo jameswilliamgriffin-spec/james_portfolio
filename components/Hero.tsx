@@ -43,7 +43,7 @@ export function Hero() {
         spotlightX.set(50);
         spotlightY.set(50);
       }}
-      className="relative isolate min-h-svh overflow-hidden px-5 py-8 text-ink transition-colors duration-700 dark:text-bone sm:px-8 lg:px-12"
+      className="relative isolate min-h-svh overflow-hidden px-5 py-5 text-ink transition-colors duration-700 dark:text-bone sm:px-8 sm:py-8 lg:px-12"
     >
       <GradientBackground />
       <AtmosphereCanvas />
@@ -54,18 +54,18 @@ export function Hero() {
       />
       <ThemeToggle />
 
-      <section className="relative z-30 mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-[1720px] grid-cols-1 items-center gap-12 pt-16 sm:min-h-[calc(100svh-4rem)] lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:pt-0">
+      <section className="relative z-30 mx-auto grid min-h-[calc(100svh-2.5rem)] w-full max-w-[1720px] grid-cols-1 items-center gap-12 pt-8 sm:min-h-[calc(100svh-4rem)] sm:pt-16 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:pt-0 xl:grid-cols-[1.08fr_0.92fr] xl:gap-16">
         <motion.div
           initial="hidden"
           animate="visible"
           transition={{ staggerChildren: 0.12, delayChildren: 0.1 }}
-          className="relative z-20 flex min-h-[46vh] flex-col justify-center lg:min-h-[78vh]"
+          className="relative z-20 flex min-h-[36vh] flex-col justify-start sm:min-h-[46vh] sm:justify-center lg:min-h-[78vh]"
         >
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="hero-name font-display text-[clamp(7.5rem,20.5vw,24rem)] font-black uppercase text-ink transition-colors duration-700 dark:text-bone">
+            <h1 className="hero-name font-display text-[clamp(9rem,42vw,15rem)] font-black uppercase text-ink transition-colors duration-700 dark:text-bone sm:text-[clamp(7.5rem,20.5vw,24rem)] lg:text-[clamp(6.75rem,16vw,13rem)] xl:text-[clamp(7.5rem,20.5vw,24rem)]">
               <span className="hero-name-line">James</span>
               <span className="hero-name-line">
                 <span className="inline-flex whitespace-nowrap">
@@ -82,7 +82,7 @@ export function Hero() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 pl-1 sm:mt-6"
+            className="mt-3 pl-1 sm:mt-6"
           >
             <AnimatedRole />
           </motion.div>
@@ -98,7 +98,7 @@ export function Hero() {
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-[660px] text-balance text-[clamp(2.25rem,3.75vw,3.35rem)] font-semibold leading-[1.08] tracking-[-0.045em] text-ink transition-colors duration-700 dark:text-bone"
+            className="max-w-[660px] text-balance text-[clamp(2.25rem,3.75vw,3.35rem)] font-semibold leading-[1.08] tracking-[-0.045em] text-ink transition-colors duration-700 dark:text-bone lg:max-w-[720px] lg:text-[clamp(2.05rem,3.05vw,2.7rem)] lg:leading-[1.16] xl:max-w-[660px] xl:text-[clamp(2.25rem,3.75vw,3.35rem)] xl:leading-[1.08]"
           >
             A designer, educator and digital product builder exploring the space
             between{" "}
@@ -110,7 +110,7 @@ export function Hero() {
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 max-w-[590px] text-pretty text-[1.18rem] font-medium leading-[1.68] tracking-[-0.012em] text-ink/74 transition-colors duration-700 dark:text-bone/70 sm:text-xl"
+            className="mt-8 max-w-[590px] text-pretty text-[1.18rem] font-medium leading-[1.68] tracking-[-0.012em] text-ink/74 transition-colors duration-700 dark:text-bone/70 sm:text-xl lg:max-w-[640px] xl:max-w-[590px]"
           >
             I create thoughtful digital experiences that make learning, design
             and everyday tools feel clearer, more useful and more engaging.
