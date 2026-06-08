@@ -5,12 +5,12 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-  useMotionTemplate,
   type Variants,
 } from "framer-motion";
 import { AnimatedRole } from "@/components/AnimatedRole";
 import { AtmosphereCanvas } from "@/components/AtmosphereCanvas";
 import { ComingSoonPill } from "@/components/ComingSoonPill";
+import { CursorInteractionLayer } from "@/components/CursorInteractionLayer";
 import { GradientBackground } from "@/components/GradientBackground";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -21,37 +21,23 @@ const fadeUp: Variants = {
 
 export function Hero() {
   const pointerX = useMotionValue(0);
-  const pointerY = useMotionValue(0);
-  const spotlightX = useMotionValue(50);
-  const spotlightY = useMotionValue(50);
   const smoothX = useSpring(pointerX, { stiffness: 80, damping: 28, mass: 0.7 });
   const copyX = useTransform(smoothX, [-0.5, 0.5], [8, -8]);
-  const spotlightBackground = useMotionTemplate`radial-gradient(620px circle at ${spotlightX}% ${spotlightY}%, rgba(255, 255, 255, 0.24), rgba(120, 160, 255, 0.08) 34%, transparent 68%)`;
 
   return (
     <main
       onMouseMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect();
         pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
-        pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
-        spotlightX.set(((event.clientX - rect.left) / rect.width) * 100);
-        spotlightY.set(((event.clientY - rect.top) / rect.height) * 100);
       }}
       onMouseLeave={() => {
         pointerX.set(0);
-        pointerY.set(0);
-        spotlightX.set(50);
-        spotlightY.set(50);
       }}
       className="relative isolate min-h-svh overflow-hidden px-5 py-5 text-ink transition-colors duration-700 dark:text-bone sm:px-8 sm:py-8 lg:px-12"
     >
       <GradientBackground />
       <AtmosphereCanvas />
-      <motion.div
-        aria-hidden="true"
-        style={{ background: spotlightBackground }}
-        className="pointer-events-none absolute inset-0 z-10 opacity-0 mix-blend-soft-light transition-opacity duration-700 sm:opacity-55 dark:sm:opacity-35"
-      />
+      <CursorInteractionLayer />
       <ThemeToggle />
 
       <section className="relative z-30 mx-auto grid min-h-[calc(100svh-2.5rem)] w-full max-w-[1720px] grid-cols-1 items-center gap-12 pt-20 sm:min-h-[calc(100svh-4rem)] sm:pt-16 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:pt-0 xl:grid-cols-[1.08fr_0.92fr] xl:gap-16">

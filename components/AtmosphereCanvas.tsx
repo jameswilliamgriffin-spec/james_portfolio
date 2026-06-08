@@ -63,6 +63,9 @@ export function AtmosphereCanvas() {
     let pointerY = 0.5;
     let easedPointerX = 0.5;
     let easedPointerY = 0.5;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     const resize = () => {
       width = window.innerWidth;
@@ -129,13 +132,19 @@ export function AtmosphereCanvas() {
       fluidContext.filter = "none";
       fluidContext.globalCompositeOperation = "source-over";
 
-      animationFrame = window.requestAnimationFrame(draw);
+      if (!reduceMotion) {
+        animationFrame = window.requestAnimationFrame(draw);
+      }
     };
 
     resize();
     window.addEventListener("resize", resize);
-    window.addEventListener("pointermove", onPointerMove, { passive: true });
-    animationFrame = window.requestAnimationFrame(draw);
+    draw(0);
+
+    if (!reduceMotion) {
+      window.addEventListener("pointermove", onPointerMove, { passive: true });
+      animationFrame = window.requestAnimationFrame(draw);
+    }
 
     return () => {
       window.cancelAnimationFrame(animationFrame);
