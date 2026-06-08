@@ -68,11 +68,14 @@ export function Hero() {
             <h1 className="hero-name font-display text-[clamp(8.25rem,38vw,13.75rem)] font-black uppercase text-ink transition-colors duration-700 dark:text-bone sm:text-[clamp(7.5rem,20.5vw,24rem)] lg:text-[clamp(6.75rem,16vw,13rem)] xl:text-[clamp(7.5rem,20.5vw,24rem)]">
               <span className="hero-name-line">James</span>
               <span className="hero-name-line">
-                <span className="inline-flex whitespace-nowrap">
-                  Griffin.
+                <span className="inline-flex items-end whitespace-nowrap">
+                  Gri
+                  <span className="inline-block pr-[0.018em] sm:pr-0">f</span>
+                  <span className="inline-block pr-[0.018em] sm:pr-0">f</span>
+                  in
                   <span
                     aria-hidden="true"
-                    className="ml-[0.018em] inline-block h-[0.365em] w-[0.016em] animate-blink translate-y-[0.055em] bg-ink align-baseline transition-colors duration-700 dark:bg-bone"
+                    className="mb-[0.08em] ml-[0.018em] inline-block h-[0.365em] w-[0.016em] animate-blink bg-ink transition-colors duration-700 dark:bg-bone"
                   />
                 </span>
               </span>
