@@ -45,12 +45,12 @@ export function AnimatedRole() {
   }, [displayedRole, index, isDeleting]);
 
   return (
-    <div className="flex min-h-8 items-center gap-6 text-center text-[1.4rem] font-semibold uppercase tracking-[0.18em] text-electric transition-colors duration-500 dark:text-electric-soft sm:min-h-8 sm:text-[0.9rem] sm:tracking-[0.44em]">
+    <div className="flex min-h-8 items-center gap-6 text-left text-[1.08rem] font-semibold uppercase tracking-[0.18em] text-electric transition-colors duration-500 dark:text-electric-soft sm:min-h-8 sm:text-center sm:text-[0.9rem] sm:tracking-[0.44em]">
       <motion.span
         aria-live="polite"
         animate={{ opacity: displayedRole ? 1 : 0.72 }}
         transition={{ duration: 0.18, ease: "easeOut" }}
-        className="inline-flex min-w-[18ch] items-center justify-center whitespace-nowrap"
+        className="inline-flex min-w-[18ch] items-center justify-start whitespace-nowrap sm:justify-center"
       >
         {displayedRole}
         <span

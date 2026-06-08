@@ -72,7 +72,7 @@ export function Hero() {
                   Griffin.
                   <span
                     aria-hidden="true"
-                    className="ml-[0.018em] inline-block h-[0.73em] w-[0.032em] animate-blink translate-y-[0.055em] bg-ink align-baseline transition-colors duration-700 dark:bg-bone"
+                    className="ml-[0.018em] inline-block h-[0.365em] w-[0.016em] animate-blink translate-y-[0.055em] bg-ink align-baseline transition-colors duration-700 dark:bg-bone"
                   />
                 </span>
               </span>
