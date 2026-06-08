@@ -22,7 +22,8 @@ const config: Config = {
       keyframes: {
         "gradient-drift": {
           "0%, 100%": { transform: "translate3d(-5%, -3%, 0) scale(1)" },
-          "50%": { transform: "translate3d(4%, 5%, 0) scale(1.12)" },
+          "33%": { transform: "translate3d(3%, 5%, 0) scale(1.1)" },
+          "66%": { transform: "translate3d(5%, -2%, 0) scale(1.05)" },
         },
         blink: {
           "0%, 45%": { opacity: "1" },
@@ -30,8 +31,8 @@ const config: Config = {
         },
       },
       animation: {
-        "gradient-drift": "gradient-drift 34s ease-in-out infinite",
-        blink: "blink 1.05s steps(1, end) infinite",
+        "gradient-drift": "gradient-drift 52s ease-in-out infinite",
+        blink: "blink 1s steps(1, end) infinite",
       },
     },
   },

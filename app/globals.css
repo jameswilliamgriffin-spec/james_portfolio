@@ -49,9 +49,22 @@ body {
 
 .hero-name {
   font-stretch: condensed;
-  letter-spacing: -0.085em;
-  transform: scaleX(0.78);
+  letter-spacing: -0.07em;
+  line-height: 0.7;
+}
+
+.hero-name-line {
+  display: block;
   transform-origin: left center;
+}
+
+.hero-name-line:first-child {
+  transform: scaleX(0.98);
+}
+
+.hero-name-line:last-child {
+  margin-top: -0.015em;
+  transform: scaleX(0.79);
 }
 
 .text-highlight {

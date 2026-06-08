@@ -17,13 +17,13 @@ export function AnimatedRole() {
   useEffect(() => {
     const timer = window.setInterval(() => {
       setIndex((current) => (current + 1) % roles.length);
-    }, 2200);
+    }, 3000);
 
     return () => window.clearInterval(timer);
   }, []);
 
   return (
-    <div className="flex min-h-7 items-center gap-7 text-center text-[0.72rem] font-semibold uppercase tracking-[0.42em] text-electric sm:min-h-8 sm:text-sm">
+    <div className="flex min-h-7 items-center gap-6 text-center text-[0.7rem] font-semibold uppercase tracking-[0.38em] text-electric sm:min-h-8 sm:text-[0.82rem]">
       <span className="h-2 w-2 rounded-full bg-electric shadow-[0_0_22px_rgba(36,55,255,0.45)]" />
       <AnimatePresence mode="wait" initial={false}>
         <motion.span

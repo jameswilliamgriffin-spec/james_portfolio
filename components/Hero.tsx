@@ -5,10 +5,12 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
+  useMotionTemplate,
   type Variants,
 } from "framer-motion";
 import Image from "next/image";
 import { AnimatedRole } from "@/components/AnimatedRole";
+import { AtmosphereCanvas } from "@/components/AtmosphereCanvas";
 import { ComingSoonPill } from "@/components/ComingSoonPill";
 import { GradientBackground } from "@/components/GradientBackground";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -21,11 +23,14 @@ const fadeUp: Variants = {
 export function Hero() {
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
+  const spotlightX = useMotionValue(50);
+  const spotlightY = useMotionValue(50);
   const smoothX = useSpring(pointerX, { stiffness: 80, damping: 28, mass: 0.7 });
   const smoothY = useSpring(pointerY, { stiffness: 80, damping: 28, mass: 0.7 });
   const objectX = useTransform(smoothX, [-0.5, 0.5], [-26, 26]);
   const objectY = useTransform(smoothY, [-0.5, 0.5], [-18, 18]);
   const copyX = useTransform(smoothX, [-0.5, 0.5], [8, -8]);
+  const spotlightBackground = useMotionTemplate`radial-gradient(620px circle at ${spotlightX}% ${spotlightY}%, rgba(255, 255, 255, 0.24), rgba(120, 160, 255, 0.08) 34%, transparent 68%)`;
 
   return (
     <main
@@ -33,14 +38,24 @@ export function Hero() {
         const rect = event.currentTarget.getBoundingClientRect();
         pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
         pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
+        spotlightX.set(((event.clientX - rect.left) / rect.width) * 100);
+        spotlightY.set(((event.clientY - rect.top) / rect.height) * 100);
       }}
       onMouseLeave={() => {
         pointerX.set(0);
         pointerY.set(0);
+        spotlightX.set(50);
+        spotlightY.set(50);
       }}
       className="relative isolate min-h-svh overflow-hidden px-5 py-8 text-ink transition-colors duration-700 dark:text-bone sm:px-8 lg:px-12"
     >
       <GradientBackground />
+      <AtmosphereCanvas />
+      <motion.div
+        aria-hidden="true"
+        style={{ background: spotlightBackground }}
+        className="pointer-events-none absolute inset-0 z-10 opacity-70 mix-blend-soft-light transition-opacity duration-700 dark:opacity-45"
+      />
       <ThemeToggle />
 
       <div
@@ -80,13 +95,13 @@ export function Hero() {
             variants={fadeUp}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="hero-name font-display text-[clamp(7rem,19vw,23rem)] font-black uppercase leading-[0.76] text-ink transition-colors duration-700 dark:text-bone">
-              <span className="block">James</span>
-              <span className="block">
+            <h1 className="hero-name font-display text-[clamp(7.5rem,20.5vw,24rem)] font-black uppercase text-ink transition-colors duration-700 dark:text-bone">
+              <span className="hero-name-line">James</span>
+              <span className="hero-name-line">
                 Griffin
                 <span
                   aria-hidden="true"
-                  className="ml-[0.02em] inline-block h-[0.78em] w-[0.035em] animate-blink translate-y-[0.07em] bg-ink align-baseline transition-colors duration-700 dark:bg-bone"
+                  className="ml-[0.018em] inline-block h-[0.73em] w-[0.032em] animate-blink translate-y-[0.055em] bg-ink align-baseline transition-colors duration-700 dark:bg-bone"
                 />
               </span>
             </h1>
@@ -95,7 +110,7 @@ export function Hero() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-7 pl-1 sm:mt-8"
+            className="mt-5 pl-1 sm:mt-6"
           >
             <AnimatedRole />
           </motion.div>
@@ -111,7 +126,7 @@ export function Hero() {
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-[680px] text-balance text-[clamp(2.35rem,4vw,3.55rem)] font-semibold leading-[1.13] tracking-[-0.035em] text-ink transition-colors duration-700 dark:text-bone"
+            className="max-w-[660px] text-balance text-[clamp(2.25rem,3.75vw,3.35rem)] font-semibold leading-[1.08] tracking-[-0.045em] text-ink transition-colors duration-700 dark:text-bone"
           >
             A designer, educator and digital product builder exploring the space
             between{" "}
@@ -123,7 +138,7 @@ export function Hero() {
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-9 max-w-[650px] text-pretty text-xl leading-[1.55] tracking-[-0.015em] text-ink/78 transition-colors duration-700 dark:text-bone/72"
+            className="mt-8 max-w-[590px] text-pretty text-[1.18rem] font-medium leading-[1.68] tracking-[-0.012em] text-ink/74 transition-colors duration-700 dark:text-bone/70 sm:text-xl"
           >
             I create thoughtful digital experiences that make learning, design
             and everyday tools feel clearer, more useful and more engaging.
