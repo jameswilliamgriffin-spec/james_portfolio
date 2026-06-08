@@ -38,13 +38,13 @@ export function GradientBackground() {
           reduceMotion
             ? undefined
             : {
-                x: ["-4%", "3%", "-1%", "-4%"],
-                y: ["2%", "-4%", "3%", "2%"],
-                scale: [1, 1.1, 0.98, 1],
+                x: ["-8%", "7%", "-3%", "-8%"],
+                y: ["4%", "-8%", "6%", "4%"],
+                scale: [1, 1.14, 0.96, 1],
               }
         }
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-[30%] -left-[26%] h-[76vw] min-h-[650px] w-[76vw] min-w-[650px] rounded-full bg-[radial-gradient(circle,rgba(36,55,255,0.58)_0%,rgba(95,137,255,0.31)_34%,rgba(95,137,255,0)_70%)] blur-[105px] mix-blend-multiply opacity-82 dark:opacity-0"
+        transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -bottom-[24%] -left-[20%] h-[62vw] min-h-[540px] w-[62vw] min-w-[540px] rounded-full bg-[radial-gradient(circle,rgba(36,55,255,0.62)_0%,rgba(95,137,255,0.34)_34%,rgba(95,137,255,0)_70%)] blur-[82px] mix-blend-multiply opacity-88 dark:opacity-0"
       />
 
       <motion.div
@@ -53,42 +53,42 @@ export function GradientBackground() {
           reduceMotion
             ? undefined
             : {
-                x: ["2%", "-4%", "2.5%", "2%"],
-                y: ["0%", "4%", "-2.5%", "0%"],
-                scale: [1, 1.08, 1.02, 1],
-              }
-        }
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-[28%] -right-[22%] h-[72vw] min-h-[620px] w-[76vw] min-w-[670px] rounded-full bg-[radial-gradient(circle,rgba(255,190,148,0.62)_0%,rgba(255,168,188,0.36)_38%,rgba(255,168,188,0)_72%)] blur-[115px] mix-blend-multiply opacity-78 dark:opacity-0"
-      />
-
-      <motion.div
-        aria-hidden="true"
-        animate={
-          reduceMotion
-            ? undefined
-            : {
-                x: ["0%", "3%", "-2.2%", "0%"],
-                y: ["-2%", "2.6%", "-1%", "-2%"],
-                scale: [1, 1.07, 1.12, 1],
-              }
-        }
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-[0%] top-[0%] h-[62vw] min-h-[540px] w-[58vw] min-w-[500px] rounded-full bg-[radial-gradient(circle,rgba(188,167,255,0.58)_0%,rgba(216,196,255,0.28)_42%,rgba(216,196,255,0)_74%)] blur-[100px] mix-blend-multiply opacity-66 dark:opacity-0"
-      />
-
-      <motion.div
-        aria-hidden="true"
-        animate={
-          reduceMotion
-            ? undefined
-            : {
-                x: ["-1.5%", "2%", "-1.5%"],
-                y: ["1.5%", "-2%", "1.5%"],
-                scale: [1, 1.04, 1],
+                x: ["5%", "-8%", "6%", "5%"],
+                y: ["0%", "8%", "-5%", "0%"],
+                scale: [1, 1.12, 0.98, 1],
               }
         }
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -bottom-[24%] -right-[18%] h-[60vw] min-h-[520px] w-[68vw] min-w-[600px] rounded-full bg-[radial-gradient(circle,rgba(255,190,148,0.66)_0%,rgba(255,168,188,0.4)_38%,rgba(255,168,188,0)_72%)] blur-[92px] mix-blend-multiply opacity-84 dark:opacity-0"
+      />
+
+      <motion.div
+        aria-hidden="true"
+        animate={
+          reduceMotion
+            ? undefined
+            : {
+                x: ["0%", "7%", "-6%", "0%"],
+                y: ["-5%", "6%", "-2%", "-5%"],
+                scale: [1, 1.1, 1.15, 1],
+              }
+        }
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-[-4%] top-[-2%] h-[54vw] min-h-[470px] w-[52vw] min-w-[460px] rounded-full bg-[radial-gradient(circle,rgba(188,167,255,0.62)_0%,rgba(216,196,255,0.34)_42%,rgba(216,196,255,0)_74%)] blur-[82px] mix-blend-multiply opacity-72 dark:opacity-0"
+      />
+
+      <motion.div
+        aria-hidden="true"
+        animate={
+          reduceMotion
+            ? undefined
+            : {
+                x: ["-4%", "5%", "-4%"],
+                y: ["4%", "-5%", "4%"],
+                scale: [1, 1.06, 1],
+              }
+        }
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         className="absolute inset-[-18%] bg-[radial-gradient(circle_at_50%_45%,rgba(255,214,222,0.32),rgba(255,214,222,0)_60%)] blur-[90px] opacity-86 dark:opacity-10"
       />
 
@@ -98,26 +98,26 @@ export function GradientBackground() {
           reduceMotion
             ? undefined
             : {
-                x: ["-2%", "1.5%", "-1%", "-2%"],
-                y: ["1.5%", "-1.8%", "1%", "1.5%"],
-                scale: [1, 1.06, 0.98, 1],
-                rotate: [0, 1.8, -1.2, 0],
+                x: ["-5%", "4%", "-2%", "-5%"],
+                y: ["4%", "-5%", "2%", "4%"],
+                scale: [1, 1.09, 0.97, 1],
+                rotate: [0, 3, -2, 0],
               }
         }
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-1/2 top-1/2 hidden h-[1080px] w-[1080px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full opacity-80 blur-[42px] dark:block"
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-1/2 top-1/2 hidden h-[1080px] w-[1080px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full opacity-88 blur-[34px] dark:block"
       >
         <motion.div
           animate={
             reduceMotion
               ? undefined
               : {
-                  x: ["-4%", "3%", "-2%", "-4%"],
-                  y: ["3%", "-2%", "2%", "3%"],
-                  scale: [1, 1.08, 0.98, 1],
+                  x: ["-7%", "6%", "-4%", "-7%"],
+                  y: ["6%", "-5%", "4%", "6%"],
+                  scale: [1, 1.12, 0.96, 1],
                 }
           }
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
           className="absolute inset-[-16%] bg-[radial-gradient(ellipse_at_28%_34%,rgba(36,55,255,0.54)_0%,rgba(36,55,255,0.16)_30%,transparent_56%),radial-gradient(ellipse_at_66%_48%,rgba(188,167,255,0.45)_0%,rgba(188,167,255,0.16)_32%,transparent_60%),radial-gradient(ellipse_at_54%_72%,rgba(255,190,148,0.38)_0%,rgba(255,168,188,0.18)_30%,transparent_58%)] mix-blend-screen"
         />
         <motion.div
@@ -125,12 +125,12 @@ export function GradientBackground() {
             reduceMotion
               ? undefined
               : {
-                  x: ["3%", "-2%", "2.5%", "3%"],
-                  y: ["-2%", "2.4%", "-1%", "-2%"],
-                  scale: [1.03, 0.98, 1.04, 1.03],
+                  x: ["6%", "-5%", "5%", "6%"],
+                  y: ["-5%", "6%", "-3%", "-5%"],
+                  scale: [1.03, 0.96, 1.08, 1.03],
                 }
           }
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
           className="absolute inset-[4%] bg-[conic-gradient(from_210deg_at_50%_50%,rgba(36,55,255,0),rgba(36,55,255,0.4),rgba(188,167,255,0.42),rgba(255,168,188,0.38),rgba(255,190,148,0.28),rgba(36,55,255,0))] opacity-68 mix-blend-screen blur-[72px]"
         />
       </motion.div>

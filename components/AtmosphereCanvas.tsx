@@ -22,7 +22,7 @@ const blobs: BlobState[] = [
     radius: 0.24,
     color: "rgba(36, 55, 255, 0.34)",
     phase: 0.2,
-    drift: 0.0021,
+    drift: 0.0038,
   },
   {
     x: 0.58,
@@ -32,7 +32,7 @@ const blobs: BlobState[] = [
     radius: 0.27,
     color: "rgba(188, 167, 255, 0.36)",
     phase: 1.9,
-    drift: 0.0017,
+    drift: 0.0031,
   },
   {
     x: 0.62,
@@ -42,7 +42,7 @@ const blobs: BlobState[] = [
     radius: 0.25,
     color: "rgba(255, 190, 148, 0.34)",
     phase: 3.1,
-    drift: 0.0014,
+    drift: 0.0026,
   },
 ];
 
@@ -90,18 +90,18 @@ export function AtmosphereCanvas() {
 
       fluidContext.clearRect(0, 0, width, height);
       fluidContext.globalCompositeOperation = "lighter";
-      fluidContext.filter = "blur(52px)";
+      fluidContext.filter = "blur(44px)";
 
       blobs.forEach((blob, index) => {
-        const cursorPull = 0.075 + index * 0.014;
+        const cursorPull = 0.095 + index * 0.018;
         const slowWave = time * blob.drift + blob.phase;
         const targetX =
           blob.baseX +
-          Math.sin(slowWave) * 0.035 +
+          Math.sin(slowWave) * 0.055 +
           (easedPointerX - 0.5) * cursorPull;
         const targetY =
           blob.baseY +
-          Math.cos(slowWave * 0.86) * 0.04 +
+          Math.cos(slowWave * 0.86) * 0.06 +
           (easedPointerY - 0.5) * cursorPull;
 
         blob.x += (targetX - blob.x) * 0.026;
