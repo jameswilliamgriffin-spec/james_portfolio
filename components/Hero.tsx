@@ -1,98 +1,141 @@
 "use client";
 
-import { motion } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 import Image from "next/image";
 import { AnimatedRole } from "@/components/AnimatedRole";
 import { ComingSoonPill } from "@/components/ComingSoonPill";
 import { GradientBackground } from "@/components/GradientBackground";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 18, filter: "blur(6px)" },
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 22, filter: "blur(8px)" },
   visible: { opacity: 1, y: 0, filter: "blur(0px)" },
 };
 
 export function Hero() {
-  return (
-    <main className="relative isolate flex min-h-svh items-center justify-center overflow-hidden px-5 py-10 sm:px-8">
-      <GradientBackground />
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const smoothX = useSpring(pointerX, { stiffness: 80, damping: 28, mass: 0.7 });
+  const smoothY = useSpring(pointerY, { stiffness: 80, damping: 28, mass: 0.7 });
+  const objectX = useTransform(smoothX, [-0.5, 0.5], [-26, 26]);
+  const objectY = useTransform(smoothY, [-0.5, 0.5], [-18, 18]);
+  const copyX = useTransform(smoothX, [-0.5, 0.5], [8, -8]);
 
-      <section className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center text-center">
+  return (
+    <main
+      onMouseMove={(event) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
+        pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
+      }}
+      onMouseLeave={() => {
+        pointerX.set(0);
+        pointerY.set(0);
+      }}
+      className="relative isolate min-h-svh overflow-hidden px-5 py-8 text-ink transition-colors duration-700 dark:text-bone sm:px-8 lg:px-12"
+    >
+      <GradientBackground />
+      <ThemeToggle />
+
+      <div
+        className="pointer-events-none absolute left-1/2 top-[45%] z-20 h-[76vw] max-h-[860px] min-h-[420px] w-[76vw] min-w-[420px] max-w-[860px] -translate-x-1/2 -translate-y-1/2 opacity-80 mix-blend-multiply dark:mix-blend-screen sm:top-1/2"
+        aria-hidden="true"
+      >
+        <motion.div style={{ x: objectX, y: objectY }} className="h-full w-full">
+          <motion.div
+            animate={{
+              y: [0, -18, 0],
+              rotate: [0, 2.5, -1.5, 0],
+              scale: [1, 1.025, 0.995, 1],
+            }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+            className="relative h-full w-full"
+          >
+            <Image
+              src="/hero-object.png"
+              alt=""
+              fill
+              priority
+              sizes="(min-width: 1024px) 760px, 96vw"
+              className="object-contain drop-shadow-[0_30px_80px_rgba(36,55,255,0.16)] dark:drop-shadow-[0_35px_90px_rgba(36,55,255,0.22)]"
+            />
+          </motion.div>
+        </motion.div>
+      </div>
+
+      <section className="relative z-30 mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-[1720px] grid-cols-1 items-center gap-12 pt-16 sm:min-h-[calc(100svh-4rem)] lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:pt-0">
         <motion.div
           initial="hidden"
           animate="visible"
-          transition={{ staggerChildren: 0.12, delayChildren: 0.12 }}
-          className="flex w-full flex-col items-center"
+          transition={{ staggerChildren: 0.12, delayChildren: 0.1 }}
+          className="relative z-20 flex min-h-[46vh] flex-col justify-center lg:min-h-[78vh]"
         >
-          <motion.h1
+          <motion.div
             variants={fadeUp}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-[clamp(5rem,18vw,15rem)] font-bold uppercase leading-[0.78] text-ink"
+            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="block">James</span>
-            <span className="block">Griffin</span>
-          </motion.h1>
+            <h1 className="hero-name font-display text-[clamp(7rem,19vw,23rem)] font-black uppercase leading-[0.76] text-ink transition-colors duration-700 dark:text-bone">
+              <span className="block">James</span>
+              <span className="block">
+                Griffin
+                <span
+                  aria-hidden="true"
+                  className="ml-[0.02em] inline-block h-[0.78em] w-[0.035em] animate-blink translate-y-[0.07em] bg-ink align-baseline transition-colors duration-700 dark:bg-bone"
+                />
+              </span>
+            </h1>
+          </motion.div>
 
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 sm:mt-7"
+            className="mt-7 pl-1 sm:mt-8"
           >
             <AnimatedRole />
           </motion.div>
+        </motion.div>
 
+        <motion.div
+          style={{ x: copyX }}
+          initial="hidden"
+          animate="visible"
+          transition={{ staggerChildren: 0.14, delayChildren: 0.28 }}
+          className="relative z-40 flex flex-col items-start pb-8 lg:pb-0"
+        >
           <motion.p
             variants={fadeUp}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 max-w-3xl text-balance text-xl font-medium leading-8 text-ink/86 sm:text-2xl sm:leading-9"
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-[680px] text-balance text-[clamp(2.35rem,4vw,3.55rem)] font-semibold leading-[1.13] tracking-[-0.035em] text-ink transition-colors duration-700 dark:text-bone"
           >
-            A designer, educator and digital product builder exploring the
-            space between people, technology and interaction.
+            A designer, educator and digital product builder exploring the space
+            between{" "}
+            <span className="text-highlight">people</span>,{" "}
+            <span className="text-highlight">technology</span> and{" "}
+            <span className="text-highlight">interaction</span>.
           </motion.p>
 
           <motion.p
             variants={fadeUp}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 max-w-2xl text-balance text-base leading-7 text-ink/62 sm:text-lg sm:leading-8"
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-9 max-w-[650px] text-pretty text-xl leading-[1.55] tracking-[-0.015em] text-ink/78 transition-colors duration-700 dark:text-bone/72"
           >
             I create thoughtful digital experiences that make learning, design
             and everyday tools feel clearer, more useful and more engaging.
           </motion.p>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24, scale: 0.96 }}
-          animate={{
-            opacity: 1,
-            y: [0, -14, 0],
-            scale: 1,
-            rotate: [0, 1.5, 0],
-          }}
-          transition={{
-            opacity: { duration: 0.9, delay: 0.7 },
-            scale: { duration: 0.9, delay: 0.7 },
-            y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-            rotate: { duration: 7, repeat: Infinity, ease: "easeInOut" },
-          }}
-          className="pointer-events-none relative z-20 -mt-2 h-48 w-48 sm:-mt-4 sm:h-64 sm:w-64 lg:-mt-8 lg:h-80 lg:w-80"
-          aria-hidden="true"
-        >
-          <Image
-            src="/hero-object.png"
-            alt=""
-            fill
-            priority
-            sizes="(min-width: 1024px) 320px, (min-width: 640px) 256px, 192px"
-            className="object-contain drop-shadow-[0_28px_48px_rgba(7,21,37,0.16)]"
-          />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-2 sm:mt-3"
-        >
-          <ComingSoonPill />
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-10"
+          >
+            <ComingSoonPill />
+          </motion.div>
         </motion.div>
       </section>
     </main>

@@ -23,23 +23,21 @@ export function AnimatedRole() {
   }, []);
 
   return (
-    <div className="flex min-h-7 items-center justify-center text-center text-[0.72rem] font-semibold uppercase tracking-[0.34em] text-ink/70 sm:min-h-8 sm:text-sm">
+    <div className="flex min-h-7 items-center gap-7 text-center text-[0.72rem] font-semibold uppercase tracking-[0.42em] text-electric sm:min-h-8 sm:text-sm">
+      <span className="h-2 w-2 rounded-full bg-electric shadow-[0_0_22px_rgba(36,55,255,0.45)]" />
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={roles[index]}
-          initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
-          transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, filter: "blur(4px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          exit={{ opacity: 0, filter: "blur(4px)" }}
+          transition={{ duration: 0.46, ease: [0.22, 1, 0.36, 1] }}
           className="inline-block"
         >
           {roles[index]}
         </motion.span>
       </AnimatePresence>
-      <span
-        aria-hidden="true"
-        className="ml-1 inline-block h-4 w-px animate-blink bg-ink/60 sm:h-5"
-      />
+      <span className="h-2 w-2 rounded-full bg-electric shadow-[0_0_22px_rgba(36,55,255,0.45)]" />
     </div>
   );
 }
