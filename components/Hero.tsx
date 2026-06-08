@@ -54,7 +54,7 @@ export function Hero() {
       />
       <ThemeToggle />
 
-      <section className="relative z-30 mx-auto grid min-h-[calc(100svh-2.5rem)] w-full max-w-[1720px] grid-cols-1 items-center gap-12 pt-8 sm:min-h-[calc(100svh-4rem)] sm:pt-16 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:pt-0 xl:grid-cols-[1.08fr_0.92fr] xl:gap-16">
+      <section className="relative z-30 mx-auto grid min-h-[calc(100svh-2.5rem)] w-full max-w-[1720px] grid-cols-1 items-center gap-12 pt-20 sm:min-h-[calc(100svh-4rem)] sm:pt-16 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:pt-0 xl:grid-cols-[1.08fr_0.92fr] xl:gap-16">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -65,7 +65,7 @@ export function Hero() {
             variants={fadeUp}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="hero-name font-display text-[clamp(9rem,42vw,15rem)] font-black uppercase text-ink transition-colors duration-700 dark:text-bone sm:text-[clamp(7.5rem,20.5vw,24rem)] lg:text-[clamp(6.75rem,16vw,13rem)] xl:text-[clamp(7.5rem,20.5vw,24rem)]">
+            <h1 className="hero-name font-display text-[clamp(8.25rem,38vw,13.75rem)] font-black uppercase text-ink transition-colors duration-700 dark:text-bone sm:text-[clamp(7.5rem,20.5vw,24rem)] lg:text-[clamp(6.75rem,16vw,13rem)] xl:text-[clamp(7.5rem,20.5vw,24rem)]">
               <span className="hero-name-line">James</span>
               <span className="hero-name-line">
                 <span className="inline-flex whitespace-nowrap">

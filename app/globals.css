@@ -50,7 +50,7 @@ body {
 .hero-name {
   font-stretch: condensed;
   letter-spacing: -0.07em;
-  line-height: 0.7;
+  line-height: 0.74;
 }
 
 .hero-name-line {
@@ -63,8 +63,18 @@ body {
 }
 
 .hero-name-line:last-child {
-  margin-top: -0.015em;
+  margin-top: 0.01em;
   transform: scaleX(0.79);
+}
+
+@media (min-width: 640px) {
+  .hero-name {
+    line-height: 0.7;
+  }
+
+  .hero-name-line:last-child {
+    margin-top: -0.015em;
+  }
 }
 
 .text-highlight {
