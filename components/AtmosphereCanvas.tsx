@@ -19,45 +19,42 @@ const blobs: BlobState[] = [
     y: 0.34,
     baseX: 0.32,
     baseY: 0.34,
-    radius: 0.22,
-    color: "rgba(36, 55, 255, 0.24)",
+    radius: 0.24,
+    color: "rgba(36, 55, 255, 0.34)",
     phase: 0.2,
-    drift: 0.0019,
+    drift: 0.0021,
   },
   {
     x: 0.58,
     y: 0.4,
     baseX: 0.58,
     baseY: 0.4,
-    radius: 0.25,
-    color: "rgba(188, 167, 255, 0.28)",
+    radius: 0.27,
+    color: "rgba(188, 167, 255, 0.36)",
     phase: 1.9,
-    drift: 0.0014,
+    drift: 0.0017,
   },
   {
     x: 0.62,
     y: 0.66,
     baseX: 0.62,
     baseY: 0.66,
-    radius: 0.23,
-    color: "rgba(255, 190, 148, 0.24)",
+    radius: 0.25,
+    color: "rgba(255, 190, 148, 0.34)",
     phase: 3.1,
-    drift: 0.0011,
+    drift: 0.0014,
   },
 ];
 
 export function AtmosphereCanvas() {
   const fluidCanvas = useRef<HTMLCanvasElement>(null);
-  const grainCanvas = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const fluid = fluidCanvas.current;
-    const grain = grainCanvas.current;
-    if (!fluid || !grain) return;
+    if (!fluid) return;
 
     const fluidContext = fluid.getContext("2d");
-    const grainContext = grain.getContext("2d");
-    if (!fluidContext || !grainContext) return;
+    if (!fluidContext) return;
 
     let width = 0;
     let height = 0;
@@ -67,42 +64,16 @@ export function AtmosphereCanvas() {
     let easedPointerX = 0.5;
     let easedPointerY = 0.5;
 
-    const renderGrain = () => {
-      const density = Math.min(window.devicePixelRatio || 1, 2);
-      const grainWidth = Math.ceil(width * density * 0.5);
-      const grainHeight = Math.ceil(height * density * 0.5);
-
-      grain.width = grainWidth;
-      grain.height = grainHeight;
-      grain.style.width = `${width}px`;
-      grain.style.height = `${height}px`;
-
-      const image = grainContext.createImageData(grainWidth, grainHeight);
-      const data = image.data;
-
-      for (let index = 0; index < data.length; index += 4) {
-        const value = 118 + Math.random() * 40;
-        data[index] = value;
-        data[index + 1] = value;
-        data[index + 2] = value;
-        data[index + 3] = Math.random() * 34;
-      }
-
-      grainContext.putImageData(image, 0, 0);
-    };
-
     const resize = () => {
       width = window.innerWidth;
       height = window.innerHeight;
-      const density = Math.min(window.devicePixelRatio || 1, 1.5);
+      const density = Math.min(window.devicePixelRatio || 1, 1.25);
 
       fluid.width = Math.ceil(width * density);
       fluid.height = Math.ceil(height * density);
       fluid.style.width = `${width}px`;
       fluid.style.height = `${height}px`;
       fluidContext.setTransform(density, 0, 0, density, 0, 0);
-
-      renderGrain();
     };
 
     const onPointerMove = (event: PointerEvent) => {
@@ -116,10 +87,10 @@ export function AtmosphereCanvas() {
 
       fluidContext.clearRect(0, 0, width, height);
       fluidContext.globalCompositeOperation = "lighter";
-      fluidContext.filter = "blur(46px)";
+      fluidContext.filter = "blur(52px)";
 
       blobs.forEach((blob, index) => {
-        const cursorPull = 0.08 + index * 0.018;
+        const cursorPull = 0.075 + index * 0.014;
         const slowWave = time * blob.drift + blob.phase;
         const targetX =
           blob.baseX +
@@ -146,7 +117,7 @@ export function AtmosphereCanvas() {
         );
 
         gradient.addColorStop(0, blob.color);
-        gradient.addColorStop(0.48, blob.color.replace("0.2", "0.12"));
+        gradient.addColorStop(0.52, blob.color.replace(/0\.\d+\)$/, "0.14)"));
         gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
         fluidContext.fillStyle = gradient;
@@ -178,12 +149,7 @@ export function AtmosphereCanvas() {
       <canvas
         ref={fluidCanvas}
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full opacity-[0.32] mix-blend-screen dark:opacity-[0.36]"
-      />
-      <canvas
-        ref={grainCanvas}
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full opacity-[0.09] mix-blend-overlay dark:opacity-[0.075]"
+        className="absolute inset-0 h-full w-full opacity-[0.34] mix-blend-multiply dark:opacity-[0.3] dark:mix-blend-screen"
       />
     </div>
   );

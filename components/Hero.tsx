@@ -8,7 +8,6 @@ import {
   useMotionTemplate,
   type Variants,
 } from "framer-motion";
-import Image from "next/image";
 import { AnimatedRole } from "@/components/AnimatedRole";
 import { AtmosphereCanvas } from "@/components/AtmosphereCanvas";
 import { ComingSoonPill } from "@/components/ComingSoonPill";
@@ -16,7 +15,7 @@ import { GradientBackground } from "@/components/GradientBackground";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 22, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 8, filter: "blur(2px)" },
   visible: { opacity: 1, y: 0, filter: "blur(0px)" },
 };
 
@@ -26,9 +25,6 @@ export function Hero() {
   const spotlightX = useMotionValue(50);
   const spotlightY = useMotionValue(50);
   const smoothX = useSpring(pointerX, { stiffness: 80, damping: 28, mass: 0.7 });
-  const smoothY = useSpring(pointerY, { stiffness: 80, damping: 28, mass: 0.7 });
-  const objectX = useTransform(smoothX, [-0.5, 0.5], [-26, 26]);
-  const objectY = useTransform(smoothY, [-0.5, 0.5], [-18, 18]);
   const copyX = useTransform(smoothX, [-0.5, 0.5], [8, -8]);
   const spotlightBackground = useMotionTemplate`radial-gradient(620px circle at ${spotlightX}% ${spotlightY}%, rgba(255, 255, 255, 0.24), rgba(120, 160, 255, 0.08) 34%, transparent 68%)`;
 
@@ -54,35 +50,9 @@ export function Hero() {
       <motion.div
         aria-hidden="true"
         style={{ background: spotlightBackground }}
-        className="pointer-events-none absolute inset-0 z-10 opacity-70 mix-blend-soft-light transition-opacity duration-700 dark:opacity-45"
+        className="pointer-events-none absolute inset-0 z-10 opacity-0 mix-blend-soft-light transition-opacity duration-700 sm:opacity-55 dark:sm:opacity-35"
       />
       <ThemeToggle />
-
-      <div
-        className="pointer-events-none absolute left-1/2 top-[45%] z-20 h-[76vw] max-h-[860px] min-h-[420px] w-[76vw] min-w-[420px] max-w-[860px] -translate-x-1/2 -translate-y-1/2 opacity-80 mix-blend-multiply dark:mix-blend-screen sm:top-1/2"
-        aria-hidden="true"
-      >
-        <motion.div style={{ x: objectX, y: objectY }} className="h-full w-full">
-          <motion.div
-            animate={{
-              y: [0, -18, 0],
-              rotate: [0, 2.5, -1.5, 0],
-              scale: [1, 1.025, 0.995, 1],
-            }}
-            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-            className="relative h-full w-full"
-          >
-            <Image
-              src="/hero-object.png"
-              alt=""
-              fill
-              priority
-              sizes="(min-width: 1024px) 760px, 96vw"
-              className="object-contain drop-shadow-[0_30px_80px_rgba(36,55,255,0.16)] dark:drop-shadow-[0_35px_90px_rgba(36,55,255,0.22)]"
-            />
-          </motion.div>
-        </motion.div>
-      </div>
 
       <section className="relative z-30 mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-[1720px] grid-cols-1 items-center gap-12 pt-16 sm:min-h-[calc(100svh-4rem)] lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:pt-0">
         <motion.div
@@ -98,11 +68,13 @@ export function Hero() {
             <h1 className="hero-name font-display text-[clamp(7.5rem,20.5vw,24rem)] font-black uppercase text-ink transition-colors duration-700 dark:text-bone">
               <span className="hero-name-line">James</span>
               <span className="hero-name-line">
-                Griffin.
-                <span
-                  aria-hidden="true"
-                  className="ml-[0.018em] inline-block h-[0.73em] w-[0.032em] animate-blink translate-y-[0.055em] bg-ink align-baseline transition-colors duration-700 dark:bg-bone"
-                />
+                <span className="inline-flex whitespace-nowrap">
+                  Griffin.
+                  <span
+                    aria-hidden="true"
+                    className="ml-[0.018em] inline-block h-[0.73em] w-[0.032em] animate-blink translate-y-[0.055em] bg-ink align-baseline transition-colors duration-700 dark:bg-bone"
+                  />
+                </span>
               </span>
             </h1>
           </motion.div>
